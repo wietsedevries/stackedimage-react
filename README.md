@@ -13,6 +13,13 @@ React.js component to easily generate an optimized ```<picture/>``` element, usi
 npm install --save stackedimage-react
 ```
 
+If you intend to use the lazy loading functionality of this component, you will need to inlcude a polyfill for the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API), which is not supported by [all browsers](https://caniuse.com/#feat=intersectionobserver).
+
+```bash
+npm install --save intersection-observer
+```
+And follow these [instructions](https://www.npmjs.com/package/intersection-observer).
+
 ## Usage
 
 The component expects the default StackedImage.png/jpeg file as its source and assumes all other images are present in the same folder. When you add any other image as the source, the component will fallback to a regular ```<img />``` element.
@@ -20,12 +27,12 @@ The component expects the default StackedImage.png/jpeg file as its source and a
 ```jsx
 import React, { Component } from 'react'
 
-import stackedImage from 'stackedimage-react'
+import StackedImage from 'stackedimage-react'
 
 class Example extends Component {
   render () {
     return (
-      <stackedImage src="../folder/StackedImage.png"/>
+      <StackedImage src="../folder/StackedImage.png"/>
     )
   }
 }
