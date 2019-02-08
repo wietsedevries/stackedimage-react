@@ -1,23 +1,163 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "standard",
-    "standard-react"
-  ],
-  "env": {
-    "es6": true
-  },
-  "plugins": [
-    "react"
-  ],
   "parserOptions": {
-    "sourceType": "module"
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
   },
+  "extends": ["plugin:react/recommended"],
   "rules": {
-    // don't force es6 functions to include space before paren
-    "space-before-function-paren": 0,
-
-    // allow specifying true explicitly for boolean props
-    "react/jsx-boolean-value": 0
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/jsx-no-target-blank": 1,
+    "react/no-find-dom-node": 1,
+    "react/no-unescaped-entities": 1,
+    "react/no-direct-mutation-state": 0,
+    "react/no-unknown-property": 1,
+    "react/no-deprecated": 1,
+    "react/no-render-return-value": 1,
+    "react/jsx-no-undef": 1,
+    "function-paren-newline": ["warn", "consistent"],
+    "prefer-const": [
+      "warn",
+      {
+        "destructuring": "all"
+      }
+    ],
+    "no-var": 1,
+    "no-new-object": 1,
+    "object-shorthand": 1,
+    "quote-props": ["warn", "as-needed"],
+    "no-array-constructor": 1,
+    "array-callback-return": 1,
+    "prefer-destructuring": [
+      "warn",
+      {
+        "array": false,
+        "object": true
+      },
+      {
+        "enforceForRenamedProperties": false
+      }
+    ],
+    "jsx-quotes": ["warn", "prefer-double"],
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "radix": 1,
+    "prefer-template": 1,
+    "no-eval": 2,
+    "no-useless-escape": 0,
+    "func-style": 0,
+    "wrap-iife": ["warn", "outside"],
+    "no-loop-func": 1,
+    "prefer-rest-params": 1,
+    "no-new-func": 1,
+    "space-before-function-paren": [
+      "warn",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "no-param-reassign": 1,
+    "prefer-spread": 1,
+    "prefer-arrow-callback": 1,
+    "arrow-spacing": 1,
+    "arrow-parens": ["warn", "as-needed"],
+    "arrow-body-style": 0,
+    "no-confusing-arrow": 1,
+    "implicit-arrow-linebreak": ["warn", "beside"],
+    "no-useless-constructor": 1,
+    "no-dupe-class-members": 1,
+    "no-duplicate-imports": 1,
+    "generator-star-spacing": [
+      "warn",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "dot-notation": 1,
+    "no-undef": 0,
+    "one-var": ["warn", "never"],
+    "no-multi-assign": 1,
+    "no-unused-vars": 1,
+    "eqeqeq": ["warn", "always"],
+    "no-case-declarations": 1,
+    "no-nested-ternary": 0,
+    "no-unneeded-ternary": 1,
+    "no-unreachable": 1,
+    "no-mixed-operators": 1,
+    "nonblock-statement-body-position": ["warn", "below"],
+    "brace-style": 1,
+    "no-else-return": 1,
+    "spaced-comment": 1,
+    "indent": ["warn", 2],
+    "space-before-blocks": [
+      "warn",
+      {
+        "functions": "always",
+        "keywords": "always",
+        "classes": "always"
+      }
+    ],
+    "keyword-spacing": [
+      "warn",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "space-infix-ops": 1,
+    "eol-last": 0,
+    "newline-per-chained-call": [
+        "warn",
+        {
+            "ignoreChainWithDepth": 3
+        }
+    ],
+    "padded-blocks": ["warn", "never"],
+    "space-in-parens": ["warn", "never"],
+    "array-bracket-spacing": ["warn", "never"],
+    "object-curly-spacing": ["warn", "always"],
+    "max-len": 0,
+    "block-spacing": 1,
+    "comma-spacing": [
+      "warn",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "computed-property-spacing": 1,
+    "func-call-spacing": ["warn", "never"],
+    "key-spacing": [
+      "warn",
+      {
+        "beforeColon": false
+      }
+    ],
+    "no-trailing-spaces": 1,
+    "no-multiple-empty-lines": 1,
+    "comma-style": ["warn", "last"],
+    "comma-dangle": ["warn", "always-multiline"],
+    "no-extra-semi": "warn",
+    "semi": 1,
+    "no-new-wrappers": 1,
+    "camelcase": 1,
+    "new-cap": 1
+  },
+  "env": {
+    "browser": true,
+    "node": true
   }
 }

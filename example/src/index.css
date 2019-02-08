@@ -1,5 +1,21 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Patua One', cursive;
+  color: #222;
+  text-align: center;
+}
+.scroll {
+  height: 100vh;
+  position: relative;
+}
+.scroll:before {
+  content: "\1F447";
+  display: block;
+  position: relative;
+  font-size: 60px;
+  top: 100px;
+}
+.caption {
+  margin-bottom: 100px;
 }

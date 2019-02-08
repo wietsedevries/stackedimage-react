@@ -1,7 +1,7 @@
 {
   "name": "stackedimage-react-example",
   "homepage": "https://wietsedevries.github.io/stackedimage-react",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {

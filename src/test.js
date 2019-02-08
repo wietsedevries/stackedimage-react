@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import StackedImage from './';
 
-describe('ExampleComponent', () => {
-  it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-})
+describe('StackedImage', () => {
+  it('Exists', () => {
+    expect(StackedImage).toBeTruthy();
+  });
+});
