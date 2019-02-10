@@ -11,7 +11,7 @@ export default class App extends Component {
         <div className="scroll">Keep scrolling...</div>
         <div className="scroll">Check the network tab in your dev tools, your image should load soon...</div>
         <StackedImage
-          src="http://wietsedevries.eu/stackedimage/demo/StackedImage.png"
+          src="https://stackedimage.com/demo/StackedImage.png"
           lazy
         />
         <div className="caption">Now resize your browser width to see the StackedImage in action :)</div>
