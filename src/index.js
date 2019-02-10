@@ -4,27 +4,29 @@ import PropTypes from 'prop-types';
 class StackedImage extends PureComponent {
   constructor(props) {
     super(props);
-    const src = !!props.src ? props.src.split('/StackedImage') : '';
     this.stacked = false;
-    this.lazy = props.lazy || false;
-    if (src.length === 2) {
+    this.src = props.src.split('/StackedImage');
+    if (this.src.length === 2) {
       this.stacked = true;
-      this.root = src[0];
-      this.ext = src[1];
+      this.root = this.src[0];
+      this.ext = this.src[1];
     }
-    this.imgRef = createRef();
-    if (this.lazy) {
+
+    // If image is lazy loaded, create state, ref and bind listener
+    this.imgRef = undefined;
+    if (props.lazy) {
       this.state = {
         ready: false,
       };
+      this.imgRef = createRef();
       this.checkIntersection = this.checkIntersection.bind(this);
     }
   }
 
   componentDidMount() {
-    if (this.lazy) {
+    if (this.props.lazy) {
       this.observer = new IntersectionObserver(this.checkIntersection, {
-        rootMargin: this.props.offset ? `${this.props.offset}px` : '300px',
+        rootMargin: this.props.offset && `${this.props.offset}px`,
       });
       this.observer.observe(this.imgRef.current);
     }
@@ -32,41 +34,52 @@ class StackedImage extends PureComponent {
 
   checkIntersection(entry) {
     if (entry[0].isIntersecting) {
-      console.log('Go');
       this.setState({ ready: true });
     }
   }
 
   render() {
-    if (this.lazy && !this.state.ready) {
+    const { media, style, src, alt, lazy } = this.props;
+    const { mobile, tablet, laptop } = media;
+    if (lazy && !this.state.ready) {
       return <span ref={this.imgRef} />;
     }
-    const { media = {}, style = {} } = this.props;
-    const { mobile = 768, tablet = 992, laptop = 1200 } = media;
     return this.stacked ? (
       <picture>
-        <source srcSet={`${this.root}/desktop.webp`} alt={this.props.alt} media={`(min-width: ${laptop}px)`}/>
-        <source srcSet={`${this.root}/desktop${this.ext}`} alt={this.props.alt} media={`(min-width: ${laptop}px)`}/>
-        <source srcSet={`${this.root}/laptop.webp`} alt={this.props.alt} media={`(min-width: ${tablet}px)`}/>
-        <source srcSet={`${this.root}/laptop${this.ext}`} alt={this.props.alt} media={`(min-width: ${tablet}px)`}/>
-        <source srcSet={`${this.root}/tablet.webp`} alt={this.props.alt} media={`(min-width: ${mobile}px)`}/>
-        <source srcSet={`${this.root}/tablet${this.ext}`} alt={this.props.alt} media={`(min-width: ${mobile}px)`}/>
-        <source srcSet={`${this.root}/mobile.webp`} alt={this.props.alt} media={`(max-width: ${mobile}px)`}/>
-        <source srcSet={`${this.root}/mobile${this.ext}`} alt={this.props.alt} media={`(max-width: ${mobile}px)`}/>
-        <img src={this.props.src} alt={this.props.alt}
+        <source srcSet={`${this.root}/desktop.webp`} alt={alt} media={`(min-width: ${laptop}px)`}/>
+        <source srcSet={`${this.root}/desktop${this.ext}`} alt={alt} media={`(min-width: ${laptop}px)`}/>
+        <source srcSet={`${this.root}/laptop.webp`} alt={alt} media={`(min-width: ${tablet}px)`}/>
+        <source srcSet={`${this.root}/laptop${this.ext}`} alt={alt} media={`(min-width: ${tablet}px)`}/>
+        <source srcSet={`${this.root}/tablet.webp`} alt={alt} media={`(min-width: ${mobile}px)`}/>
+        <source srcSet={`${this.root}/tablet${this.ext}`} alt={alt} media={`(min-width: ${mobile}px)`}/>
+        <source srcSet={`${this.root}/mobile.webp`} alt={alt} media={`(max-width: ${mobile}px)`}/>
+        <source srcSet={`${this.root}/mobile${this.ext}`} alt={alt} media={`(max-width: ${mobile}px)`}/>
+        <img src={src} alt={alt}
         />
       </picture>
     ) : (
-      <img style={style} src={this.props.src} alt={this.props.alt}/>
+      <img style={style} src={src} alt={alt}/>
     );
   }
 }
+StackedImage.defaultProps = {
+  src: '[invalid src prop]',
+  alt: '',
+  media: {
+    mobile: 768,
+    tablet: 992,
+    laptop: 1200,
+  },
+  lazy: false,
+  offset: 300,
+  style: {},
+};
 StackedImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   media: PropTypes.object,
   lazy: PropTypes.bool,
-  offset: PropTypes.string,
+  offset: PropTypes.number,
   style: PropTypes.object,
 };
 export default StackedImage;

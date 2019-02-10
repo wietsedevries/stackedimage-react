@@ -5,6 +5,14 @@ body {
   color: #222;
   text-align: center;
 }
+h2 {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: -15px;
+}
+h2 a {
+  color: #EB4A42;
+}
 .scroll {
   height: 100vh;
   position: relative;
@@ -18,4 +26,6 @@ body {
 }
 .caption {
   margin-bottom: 100px;
+  box-sizing: border-box;
+  padding: 0 25px;
 }

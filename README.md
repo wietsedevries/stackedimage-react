@@ -3,9 +3,11 @@
 
 React.js component to easily generate an optimized ```<picture/>``` element, using the StackedImage folder you created at [StackedImage.com](https://stackedimage.com)
 
-[![NPM](https://img.shields.io/npm/v/stackedimage-react.svg)](https://www.npmjs.com/package/stackedimage-react) [![JavaScript Style Guide](https://img.shields.io/bundlephobia/minzip/stackedimage-react.svg)](https://www.npmjs.com/package/stackedimage-react)
+[![NPM](https://img.shields.io/npm/v/stackedimage-react.svg)](https://www.npmjs.com/package/stackedimage-react) [![NPM](https://img.shields.io/bundlephobia/minzip/stackedimage-react.svg)](https://www.npmjs.com/package/stackedimage-react)
 
+## Demo
 
+Visit the [demo page](https://wietsedevries.github.io/stackedimage-react/)...
 
 ## Install
 

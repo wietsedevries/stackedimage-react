@@ -6,6 +6,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <h1>Lazy loaded StackedImage component</h1>
+        <h2>Generated at <a href="https://stackedimage.com">StackedImage.com</a></h2>
         <div className="scroll">Scroll down</div>
         <div className="scroll">Keep scrolling...</div>
         <div className="scroll">Check the network tab in your dev tools, your image should load soon...</div>
@@ -13,8 +14,8 @@ export default class App extends Component {
           src="http://wietsedevries.eu/stackedimage/demo/StackedImage.png"
           lazy
         />
-        <div className="caption">Now resize your browser width to see the component in action :)</div>
+        <div className="caption">Now resize your browser width to see the StackedImage in action :)</div>
       </Fragment>
-    )
+    );
   }
 }
