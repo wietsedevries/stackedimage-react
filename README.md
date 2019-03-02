@@ -52,6 +52,7 @@ The StackedImage component accepts additional props for extra configuration, but
 |lazy|bool|```false```|no|Configure the StackedImage to be lazy-loaded|
 |offset|number|```300```|no|Determines at what offset from the viewport (in pixels) the image should start to load (only when the prop ```lazy``` has been applied|
 |style|object|none|no|Add your own styles|
+|className|string|none|no|Add your own class|
 
 ### Full example
 ```jsx
@@ -76,6 +77,7 @@ class Example extends Component {
           width: '100%',
           height: '300px',
         }}
+        className="image"
       />
     )
   }

@@ -39,10 +39,10 @@ class StackedImage extends PureComponent {
   }
 
   render() {
-    const { media, style, src, alt, lazy } = this.props;
+    const { media, style, src, alt, lazy, className } = this.props;
     const { mobile, tablet, laptop } = media;
     if (lazy && !this.state.ready) {
-      return <span ref={this.imgRef} />;
+      return <img ref={this.imgRef} className={className} style={style}/>;
     }
     return this.stacked ? (
       <picture>
@@ -54,11 +54,10 @@ class StackedImage extends PureComponent {
         <source srcSet={`${this.root}/tablet${this.ext}`} alt={alt} media={`(min-width: ${mobile}px)`}/>
         <source srcSet={`${this.root}/mobile.webp`} alt={alt} media={`(max-width: ${mobile}px)`}/>
         <source srcSet={`${this.root}/mobile${this.ext}`} alt={alt} media={`(max-width: ${mobile}px)`}/>
-        <img src={src} alt={alt}
-        />
+        <img src={src} alt={alt} className={className} style={style} />
       </picture>
     ) : (
-      <img style={style} src={src} alt={alt}/>
+      <img src={src} alt={alt} className={className} style={style} />
     );
   }
 }
@@ -73,6 +72,7 @@ StackedImage.defaultProps = {
   lazy: false,
   offset: 300,
   style: {},
+  className: '',
 };
 StackedImage.propTypes = {
   src: PropTypes.string.isRequired,
@@ -81,5 +81,6 @@ StackedImage.propTypes = {
   lazy: PropTypes.bool,
   offset: PropTypes.number,
   style: PropTypes.object,
+  className: PropTypes.string,
 };
 export default StackedImage;
